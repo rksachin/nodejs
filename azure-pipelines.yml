@@ -20,7 +20,7 @@ steps:
   inputs:
     command: custom
     verbose: false
-    customCommand: 'audit --registry=https://registry.npmjs.org/'
+    customCommand: 'audit --registry=http://registry.npmjs.org/'
 
 - script: |
     npm install
