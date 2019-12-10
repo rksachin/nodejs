@@ -10,7 +10,17 @@ var methodOverride = require('method-override');
 
 // configuration ===============================================================
 //mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. 
-mongoose.connect(database.remoteUrl); 	// Connect to Azure remote CosmosDB instance. 
+const config = {
+    useNewUrlParser: true,
+  };
+
+  mongoose.connect(database.remoteUrl, {useNewUrlParser: true}, (err) => {
+    if (err)
+        console.error(err);
+    else
+        console.log("Connected to the mongodb"); 
+});
+//mongoose.connect(database.remoteUrl); 	// Connect to Azure remote CosmosDB instance. 
 
 app.use(express.static('./public')); 		// set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
